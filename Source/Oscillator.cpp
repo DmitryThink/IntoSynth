@@ -20,6 +20,8 @@ processor(p)
     oscMenu.addItem("Sine", 1);
     oscMenu.addItem("Saw", 2);
     oscMenu.addItem("Square", 3);
+    oscMenu.addItem("Noise", 4);
+    oscMenu.addItem("Sawn", 5);
     oscMenu.setJustificationType(Justification::centred);
     addAndMakeVisible(&oscMenu);
     oscMenu.addListener(this);

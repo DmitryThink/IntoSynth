@@ -35,23 +35,25 @@ public:
     
     double setOscType ()
     {
-        if (theWave == 0)
-        {
-            return osc1.sinewave(frequency);
-        }
-        
-        if (theWave == 1)
-        {
-            return osc1.saw(frequency);
-        }
-        
-        if (theWave == 2)
-        {
-            return osc1.square(frequency);
-        }
-        else
-        {
-            return osc1.sinewave(frequency);
+        switch (theWave){
+            case 0:
+                return osc1.sinewave(frequency);
+                break;
+            case 1:
+                return osc1.saw(frequency);
+                break;
+            case 2:
+                return osc1.square(frequency);
+                break;
+            case 3:
+                return osc1.noise();
+                break;
+            case 4:
+                return osc1.sawn(frequency);
+                break;
+            default:
+                return osc1.sinewave(frequency);
+                break;
         }
     }
     

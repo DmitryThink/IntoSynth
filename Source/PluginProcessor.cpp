@@ -237,17 +237,26 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
         }
     }
     keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+
     buffer.clear();
+
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
     updateFilter();
+
     dsp::AudioBlock<float> block (buffer);
+
     theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
     theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
     theReverbParameters.wetLevel = *tree.getRawParameterValue("wetLevel");
     theReverbParameters.damping = *tree.getRawParameterValue("damping");
     theReverbParameters.width = *tree.getRawParameterValue("width");
     theReverb.setParameters(theReverbParameters);
-    theReverb.processMono (buffer.getWritePointer (0), buffer.getNumSamples());
+    if (getTotalNumOutputChannels() == 1)
+        theReverb.processMono (buffer.getWritePointer (0), buffer.getNumSamples());
+    else
+        theReverb.processStereo (buffer.getWritePointer (0), buffer.getWritePointer (1), buffer.getNumSamples());
+
     stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 }
 
