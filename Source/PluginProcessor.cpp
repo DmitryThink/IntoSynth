@@ -48,8 +48,18 @@ tree(*this, nullptr)
     tree.createAndAddParameter("filterType", "FilterType", "filterType", filterTypeVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("filterCutoff", "FilterCutoff", "filterCutoff", filterVal, 400.0f, nullptr, nullptr);
     tree.createAndAddParameter("filterRes", "FilterRes", "filterRes", resVal, 1, nullptr, nullptr);
-    
-    
+
+    NormalisableRange<float> roomSizeVal (0.0f, 1.0f);
+    NormalisableRange<float> dryLevelVal (0.0f, 1.0f);
+    NormalisableRange<float> wetLevelVal (0.0f, 1.0f);
+    NormalisableRange<float> dampingVal (0.0f, 1.0f);
+    NormalisableRange<float> widthVal (0.0f, 1.0f);
+    tree.createAndAddParameter("roomSize", "RoomSize", "roomSize", roomSizeVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("dryLevel", "DryLevel", "dryLevel", dryLevelVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("wetLevel", "WetLevel", "wetLevel", wetLevelVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("damping", "Damping", "damping", dampingVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("width", "Width", "width", widthVal, 0, nullptr, nullptr);
+
     mySynth.clearVoices();
     
     for (int i = 0; i < 5; i++)
@@ -132,6 +142,7 @@ void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int sam
     ignoreUnused(samplesPerBlock);
     lastSampleRate = sampleRate;
     mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
+    theReverb.setSampleRate(lastSampleRate);
     
     dsp::ProcessSpec spec;
     spec.sampleRate = lastSampleRate;
@@ -140,6 +151,7 @@ void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int sam
     
     stateVariableFilter.reset();
     stateVariableFilter.prepare(spec);
+    keyboardState.reset();
     updateFilter();
 }
 
@@ -147,6 +159,7 @@ void JuceSynthFrameworkAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
+    keyboardState.reset();
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -220,14 +233,21 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
             myVoice->getFilterParams(tree.getRawParameterValue("filterType"),
                                      tree.getRawParameterValue("filterCutoff"),
                                      tree.getRawParameterValue("filterRes"));
-            
+
         }
     }
-    
+    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
     buffer.clear();
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     updateFilter();
     dsp::AudioBlock<float> block (buffer);
+    theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
+    theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
+    theReverbParameters.wetLevel = *tree.getRawParameterValue("wetLevel");
+    theReverbParameters.damping = *tree.getRawParameterValue("damping");
+    theReverbParameters.width = *tree.getRawParameterValue("width");
+    theReverb.setParameters(theReverbParameters);
+    theReverb.processMono (buffer.getWritePointer (0), buffer.getNumSamples());
     stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 }
 

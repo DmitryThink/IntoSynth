@@ -4,39 +4,43 @@
               reportAppUsage="1" splashScreenColour="Dark" projectType="audioplug"
               version="1.0.0" bundleIdentifier="com.yourcompany.juceSynthFramework"
               includeBinaryInAppConfig="1" companyCopyright="" buildVST="1"
-              buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0" buildAAX="0"
+              buildVST3="1" buildAU="0" buildAUv3="0" buildRTAS="0" buildAAX="0"
               buildStandalone="1" enableIAA="0" pluginName="juceSynthFramework"
               pluginDesc="juceSynthFramework" pluginManufacturer="yourcompany"
               pluginManufacturerCode="Manu" pluginCode="Ymdl" pluginChannelConfigs=""
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="juceSynthFrameworkAU"
               aaxIdentifier="com.yourcompany.juceSynthFramework" pluginAAXCategory="2"
-              jucerVersion="5.3.1" pluginFormats="buildVST,buildAU,buildStandalone"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+              jucerVersion="5.4.1" pluginFormats="buildStandalone,buildVST,buildVST3"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              cppLanguageStandard="17" pluginRTASCategory="4096">
   <MAINGROUP id="Z0T8fs" name="juceSynthFramework">
     <GROUP id="{FDD0FFB0-7ABA-CAD0-AB6D-A607E5623CAE}" name="Source">
-      <GROUP id="{B5469151-45EB-23CF-24BA-61DF6EF9FF89}" name="Maximilian">
-        <GROUP id="{22CE6B75-7465-D7A3-82AB-D7CEAEF1B519}" name="libs">
-          <FILE id="qirNEs" name="fft.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/fft.cpp"/>
-          <FILE id="qyl0UF" name="fft.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/fft.h"/>
-          <FILE id="tx4jTf" name="maxiAtoms.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/maxiAtoms.cpp"/>
-          <FILE id="EzOy0u" name="maxiAtoms.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxiAtoms.h"/>
-          <FILE id="xfTnfo" name="maxiBark.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/maxiBark.cpp"/>
-          <FILE id="DB16qJ" name="maxiBark.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxiBark.h"/>
-          <FILE id="q8R2ht" name="maxiFFT.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/maxiFFT.cpp"/>
-          <FILE id="kV04Lh" name="maxiFFT.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxiFFT.h"/>
-          <FILE id="tkMceF" name="maxiGrains.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/maxiGrains.cpp"/>
-          <FILE id="difWYi" name="maxiGrains.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxiGrains.h"/>
-          <FILE id="LkT8yt" name="maxim.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxim.h"/>
-          <FILE id="oAGQlV" name="maxiMFCC.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/libs/maxiMFCC.cpp"/>
-          <FILE id="lqHxUI" name="maxiMFCC.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/maxiMFCC.h"/>
-          <FILE id="FBJWqx" name="sineTable.h" compile="0" resource="0" file="../../../Libraries/Maximilian/libs/sineTable.h"/>
+      <FILE id="SCfhgf" name="ReverbSliders.h" compile="0" resource="0" file="Source/ReverbSliders.h"/>
+      <FILE id="xqdxL5" name="ReverbSliders.cpp" compile="1" resource="0"
+            file="Source/ReverbSliders.cpp"/>
+      <GROUP id="{E324FEC3-D7F4-3B54-970B-A891C7EFE35B}" name="Maximilian">
+        <GROUP id="{87BFD6C0-556D-0874-F5AE-6BFC63FC1ADF}" name="libs">
+          <FILE id="OYNB4b" name="fft.cpp" compile="1" resource="0" file="Source/Maximilian/libs/fft.cpp"/>
+          <FILE id="ZHpJR8" name="fft.h" compile="0" resource="0" file="Source/Maximilian/libs/fft.h"/>
+          <FILE id="e8RlyX" name="maxiAtoms.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiAtoms.cpp"/>
+          <FILE id="SaQ6n3" name="maxiAtoms.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiAtoms.h"/>
+          <FILE id="jdZ5YY" name="maxiBark.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiBark.cpp"/>
+          <FILE id="U1J2OF" name="maxiBark.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiBark.h"/>
+          <FILE id="msNNOK" name="maxiFFT.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiFFT.cpp"/>
+          <FILE id="d3TpVN" name="maxiFFT.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiFFT.h"/>
+          <FILE id="N2tFNA" name="maxiGrains.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiGrains.cpp"/>
+          <FILE id="vRDFmu" name="maxiGrains.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiGrains.h"/>
+          <FILE id="PAtFyH" name="maxim.h" compile="0" resource="0" file="Source/Maximilian/libs/maxim.h"/>
+          <FILE id="OddM8S" name="maxiMFCC.cpp" compile="1" resource="0" file="Source/Maximilian/libs/maxiMFCC.cpp"/>
+          <FILE id="TmDtTo" name="maxiMFCC.h" compile="0" resource="0" file="Source/Maximilian/libs/maxiMFCC.h"/>
+          <FILE id="ZOdJGY" name="sineTable.h" compile="0" resource="0" file="Source/Maximilian/libs/sineTable.h"/>
         </GROUP>
-        <FILE id="E2No1w" name="main.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/main.cpp"/>
-        <FILE id="ulT2V1" name="maximilian.cpp" compile="1" resource="0" file="../../../Libraries/Maximilian/maximilian.cpp"/>
-        <FILE id="hZD4wo" name="maximilian.h" compile="0" resource="0" file="../../../Libraries/Maximilian/maximilian.h"/>
-        <FILE id="gsHDCs" name="stb_vorbis.c" compile="1" resource="0" file="../../../Libraries/Maximilian/stb_vorbis.c"/>
-        <FILE id="I0g7ng" name="stb_vorbis.h" compile="0" resource="0" file="../../../Libraries/Maximilian/stb_vorbis.h"/>
+        <FILE id="Vy8XYE" name="main.cpp" compile="1" resource="0" file="Source/Maximilian/main.cpp"/>
+        <FILE id="r9XfsM" name="maximilian.cpp" compile="1" resource="0" file="Source/Maximilian/maximilian.cpp"/>
+        <FILE id="QqEiky" name="maximilian.h" compile="0" resource="0" file="Source/Maximilian/maximilian.h"/>
+        <FILE id="YS7UpI" name="stb_vorbis.c" compile="1" resource="0" file="Source/Maximilian/stb_vorbis.c"/>
+        <FILE id="EucYdX" name="stb_vorbis.h" compile="0" resource="0" file="Source/Maximilian/stb_vorbis.h"/>
       </GROUP>
       <FILE id="Tn9AzU" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -56,32 +60,50 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" enablePluginBinaryCopyStep="1" isDebug="1" optimisation="1"
-                       linkTimeOptimisation="0" targetName="juceSynthFramework" headerPath="/Users/djatwar/Development/Libraries/Maximilian"/>
-        <CONFIGURATION name="Release" enablePluginBinaryCopyStep="1" isDebug="0" optimisation="3"
-                       linkTimeOptimisation="1" targetName="juceSynthFramework"/>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="/home/think/Maximilian/home/think/juce_projects/juceSynthFramework/Source/Maximilian"/>
+        <CONFIGURATION isDebug="0" name="Release" headerPath="/home/think/Maximilian/home/think/juce_projects/juceSynthFramework/Source/Maximilian"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_video" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../../../../../Applications/JUCE/modules"/>
-        <MODULEPATH id="juce_dsp" path="../../../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../juce"/>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_dsp" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_cryptography" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
       </MODULEPATHS>
-    </XCODE_MAC>
+    </LINUX_MAKE>
+    <CLION targetFolder="Builds/CLion" clionXcodeEnabled="0" clionMakefileEnabled="1">
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../juce"/>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_dsp" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_cryptography" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </CLION>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -103,4 +125,7 @@
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+  <LIVE_SETTINGS>
+    <LINUX buildEnabled="1"/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>

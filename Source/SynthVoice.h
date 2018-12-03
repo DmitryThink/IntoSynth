@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SynthSound.h"
-#include "Maximilian.h"
+#include "Maximilian/maximilian.h"
 
 
 class SynthVoice : public SynthesiserVoice

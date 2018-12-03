@@ -15,6 +15,7 @@
 #include "Oscillator.h"
 #include "Envelope.h"
 #include "Filter.h"
+#include "ReverbSliders.h"
 
 
 //==============================================================================
@@ -41,6 +42,9 @@ private:
     Oscillator oscGui;
     Envelope envGui;
     Filter filterGui;
+    ReverbSliders reverbGui;
+
+    MidiKeyboardComponent keyboardComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JuceSynthFrameworkAudioProcessorEditor)
 };

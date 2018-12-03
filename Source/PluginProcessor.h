@@ -61,9 +61,14 @@ public:
     
     AudioProcessorValueTreeState tree;
 
+    MidiKeyboardState keyboardState;
+
 private:
     Synthesiser mySynth;
     SynthVoice* myVoice;
+
+    Reverb theReverb;
+    Reverb::Parameters theReverbParameters;
 
     dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
     
