@@ -48,11 +48,15 @@ ReverbSliders::ReverbSliders(JuceSynthFrameworkAudioProcessor& p) :
     widthSlider.setTextBoxStyle(Slider::NoTextBox, true, 0, 0);
     addAndMakeVisible(&widthSlider);
 
+    turnButton.setColour(TextEditor::ColourIds::highlightedTextColourId, Colours::hotpink);
+    addAndMakeVisible(&turnButton);
+
     roomSizeVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "roomSize", roomSizeSlider);
     dampingVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "damping", dampingSlider);
     wetLevelVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "wetLevel", wetLevelSlider);
     dryLevelVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "dryLevel", dryLevelSlider);
     widthVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "width", roomSizeSlider);
+    turnButtonVal = new AudioProcessorValueTreeState::ButtonAttachment (processor.tree, "turn", turnButton);
 }
 
 ReverbSliders::~ReverbSliders()
@@ -95,4 +99,5 @@ void ReverbSliders::resized()
     wetLevelSlider.setBounds (area.removeFromLeft(sliderWidth).removeFromTop(sliderHeight).withTrimmedTop(10));
     dryLevelSlider.setBounds (area.removeFromLeft(sliderWidth).removeFromTop(sliderHeight).withTrimmedTop(10));
     widthSlider.setBounds (area.removeFromLeft(sliderWidth).removeFromTop(sliderHeight).withTrimmedTop(10));
+    turnButton.setBounds (40, 40, 20, 20);
 }

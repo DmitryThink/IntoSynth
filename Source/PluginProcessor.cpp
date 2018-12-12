@@ -26,6 +26,7 @@ JuceSynthFrameworkAudioProcessor::JuceSynthFrameworkAudioProcessor()
 tree(*this, nullptr)
 #endif
 {
+    dist = new Distortion();
     //need these normalisable range objects for the tree state below this
     NormalisableRange<float> attackParam (0.1f, 5000.0f);
     NormalisableRange<float> decayParam (1.0f, 2000.0f);
@@ -54,11 +55,13 @@ tree(*this, nullptr)
     NormalisableRange<float> wetLevelVal (0.0f, 1.0f);
     NormalisableRange<float> dampingVal (0.0f, 1.0f);
     NormalisableRange<float> widthVal (0.0f, 1.0f);
+    NormalisableRange<float> buttonRange (0, 1, 1);
     tree.createAndAddParameter("roomSize", "RoomSize", "roomSize", roomSizeVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("dryLevel", "DryLevel", "dryLevel", dryLevelVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("wetLevel", "WetLevel", "wetLevel", wetLevelVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("damping", "Damping", "damping", dampingVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("width", "Width", "width", widthVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("turn", "Turn", "turn", buttonRange, 0, nullptr, nullptr);
 
     mySynth.clearVoices();
     
@@ -236,6 +239,7 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
 
         }
     }
+
     keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
 
     buffer.clear();
@@ -246,18 +250,25 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
 
     dsp::AudioBlock<float> block (buffer);
 
-    theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
-    theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
-    theReverbParameters.wetLevel = *tree.getRawParameterValue("wetLevel");
-    theReverbParameters.damping = *tree.getRawParameterValue("damping");
-    theReverbParameters.width = *tree.getRawParameterValue("width");
-    theReverb.setParameters(theReverbParameters);
-    if (getTotalNumOutputChannels() == 1)
-        theReverb.processMono (buffer.getWritePointer (0), buffer.getNumSamples());
-    else
-        theReverb.processStereo (buffer.getWritePointer (0), buffer.getWritePointer (1), buffer.getNumSamples());
+    for (int i = 0; i < buffer.getNumSamples(); ++i) {
+        float* const samples = buffer.getWritePointer(0);
+        samples[i] = dist->processSample(samples[i]);
+    }
 
+    if (*tree.getRawParameterValue("turn")) {
+        theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
+        theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
+        theReverbParameters.wetLevel = *tree.getRawParameterValue("wetLevel");
+        theReverbParameters.damping = *tree.getRawParameterValue("damping");
+        theReverbParameters.width = *tree.getRawParameterValue("width");
+        theReverb.setParameters(theReverbParameters);
+        if (getTotalNumOutputChannels() == 1)
+            theReverb.processMono(buffer.getWritePointer(0), buffer.getNumSamples());
+        else
+            theReverb.processStereo(buffer.getWritePointer(0), buffer.getWritePointer(1), buffer.getNumSamples());
+    }
     stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
+
 }
 
 //==============================================================================

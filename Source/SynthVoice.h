@@ -38,22 +38,16 @@ public:
         switch (theWave){
             case 0:
                 return osc1.sinewave(frequency);
-                break;
             case 1:
                 return osc1.saw(frequency);
-                break;
             case 2:
                 return osc1.square(frequency);
-                break;
             case 3:
                 return osc1.noise();
-                break;
             case 4:
                 return osc1.sawn(frequency);
-                break;
             default:
                 return osc1.sinewave(frequency);
-                break;
         }
     }
     
@@ -144,4 +138,5 @@ private:
     
     maxiOsc osc1;
     maxiEnv env1;
+// distortion;
 };

@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SynthVoice.h"
 #include "SynthSound.h"
+#include "Distortion.h"
 
 //==============================================================================
 /**
@@ -69,6 +70,8 @@ private:
 
     Reverb theReverb;
     Reverb::Parameters theReverbParameters;
+
+    ScopedPointer<Distortion> dist;
 
     dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
     

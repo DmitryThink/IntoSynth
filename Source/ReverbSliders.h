@@ -31,12 +31,14 @@ private:
     Slider wetLevelSlider;
     Slider dryLevelSlider;
     Slider widthSlider;
+    ToggleButton turnButton;
 
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> roomSizeVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> dampingVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> wetLevelVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> dryLevelVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> widthVal;
+    ScopedPointer<AudioProcessorValueTreeState::ButtonAttachment> turnButtonVal;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

@@ -16,6 +16,11 @@
               cppLanguageStandard="17" pluginRTASCategory="4096">
   <MAINGROUP id="Z0T8fs" name="juceSynthFramework">
     <GROUP id="{FDD0FFB0-7ABA-CAD0-AB6D-A607E5623CAE}" name="Source">
+      <FILE id="hsIsQU" name="DistortionGUI.cpp" compile="1" resource="0"
+            file="Source/DistortionGUI.cpp"/>
+      <FILE id="qzQfGb" name="DistortionGUI.h" compile="0" resource="0" file="Source/DistortionGUI.h"/>
+      <FILE id="eT2MID" name="Distortion.cpp" compile="1" resource="0" file="Source/Distortion.cpp"/>
+      <FILE id="nouP9C" name="Distortion.h" compile="0" resource="0" file="Source/Distortion.h"/>
       <FILE id="SCfhgf" name="ReverbSliders.h" compile="0" resource="0" file="Source/ReverbSliders.h"/>
       <FILE id="xqdxL5" name="ReverbSliders.cpp" compile="1" resource="0"
             file="Source/ReverbSliders.cpp"/>

@@ -16,6 +16,7 @@
 #include "Envelope.h"
 #include "Filter.h"
 #include "ReverbSliders.h"
+#include "DistortionGUI.h"
 
 
 //==============================================================================
@@ -43,6 +44,7 @@ private:
     Envelope envGui;
     Filter filterGui;
     ReverbSliders reverbGui;
+    DistortionGUI distortionGUI;
 
     MidiKeyboardComponent keyboardComponent;
 
