@@ -12,14 +12,18 @@
 
 Distortion::Distortion() {
     controls.mode = 3;
-    controls.drive = 100.f;
+    controls.drive = 1.f;
     controls.mix = 1.f;
 }
 
 Distortion::~Distortion() {}
 
-float Distortion::processSample(float sample)
+float Distortion::processSample(float sample, float type, float amplitude, float ratio)
 {
+    controls.mode = type;
+    controls.drive = amplitude;
+    controls.mix = ratio;
+
     input = sample;
     output = input * controls.drive;
 

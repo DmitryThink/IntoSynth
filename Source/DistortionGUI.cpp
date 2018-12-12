@@ -30,7 +30,7 @@ DistortionGUI::DistortionGUI(JuceSynthFrameworkAudioProcessor& p) :
     distortionTypeVal = new AudioProcessorValueTreeState::ComboBoxAttachment (processor.tree, "distortionType", distortionMenu);
 
     distortionAmplitude.setSliderStyle(Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-    distortionAmplitude.setRange(0., 1);
+    distortionAmplitude.setRange(0., 1000.0);
     distortionAmplitude.setValue (0.);
     distortionAmplitude.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     addAndMakeVisible(&distortionAmplitude);

@@ -38,8 +38,7 @@ tree(*this, nullptr)
     tree.createAndAddParameter("decay", "Decay", "decay", decayParam, 1.0f, nullptr, nullptr);
     tree.createAndAddParameter("sustain", "Sustain", "sustain", sustainParam, 0.8f, nullptr, nullptr);
     tree.createAndAddParameter("release", "Release", "release", releaseParam, 0.1f, nullptr, nullptr);
-    
-    
+
     NormalisableRange<float> wavetypeParam (0, 2);
     tree.createAndAddParameter("wavetype", "WaveType", "wavetype", wavetypeParam, 0, nullptr, nullptr);
     
@@ -62,6 +61,13 @@ tree(*this, nullptr)
     tree.createAndAddParameter("damping", "Damping", "damping", dampingVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("width", "Width", "width", widthVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("turn", "Turn", "turn", buttonRange, 0, nullptr, nullptr);
+
+    NormalisableRange<float> distortionType (0, 7);
+    NormalisableRange<float> distortionAmplitude (0.0f, 1000.0f);
+    NormalisableRange<float> distortionRatio (0.0f, 1.0f);
+    tree.createAndAddParameter("distortionType", "DistortionType", "distortionType", distortionType, 0, nullptr, nullptr);
+    tree.createAndAddParameter("distortionAmplitude", "DistortionAmplitude", "distortionAmplitude", distortionAmplitude, 0, nullptr, nullptr);
+    tree.createAndAddParameter("distortionRatio", "DistortionRatio", "distortionRatio", distortionRatio, 0, nullptr, nullptr);
 
     mySynth.clearVoices();
     
@@ -252,7 +258,8 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
 
     for (int i = 0; i < buffer.getNumSamples(); ++i) {
         float* const samples = buffer.getWritePointer(0);
-        samples[i] = dist->processSample(samples[i]);
+        //std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
+        samples[i] = dist->processSample(samples[i], *tree.getRawParameterValue("distortionType"), *tree.getRawParameterValue("distortionAmplitude"), *tree.getRawParameterValue("distortionRatio"));
     }
 
     if (*tree.getRawParameterValue("turn")) {

@@ -29,7 +29,7 @@ public:
 
     Distortion();
     ~Distortion();
-    float processSample(float sample);
+    float processSample(float sample, float type, float amplitude, float ratio);
 
 private:
     // Intermediate values

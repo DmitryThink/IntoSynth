@@ -49,7 +49,6 @@ void JuceSynthFrameworkAudioProcessorEditor::resized()
     envGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
     reverbGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
 
-
     distortionGUI.setBounds(0, 200, 200, 200);
     keyboardComponent.setBounds (0, getHeight()-100, getWidth(), 100);
 }
