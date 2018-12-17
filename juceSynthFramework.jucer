@@ -16,6 +16,8 @@
               cppLanguageStandard="17" pluginRTASCategory="4096">
   <MAINGROUP id="Z0T8fs" name="juceSynthFramework">
     <GROUP id="{FDD0FFB0-7ABA-CAD0-AB6D-A607E5623CAE}" name="Source">
+      <FILE id="pBY9Sa" name="DelayGUI.cpp" compile="1" resource="0" file="Source/DelayGUI.cpp"/>
+      <FILE id="QKlhn9" name="DelayGUI.h" compile="0" resource="0" file="Source/DelayGUI.h"/>
       <FILE id="hsIsQU" name="DistortionGUI.cpp" compile="1" resource="0"
             file="Source/DistortionGUI.cpp"/>
       <FILE id="qzQfGb" name="DistortionGUI.h" compile="0" resource="0" file="Source/DistortionGUI.h"/>

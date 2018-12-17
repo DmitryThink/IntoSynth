@@ -63,8 +63,8 @@ tree(*this, nullptr)
     tree.createAndAddParameter("turn", "Turn", "turn", buttonRange, 0, nullptr, nullptr);
 
     NormalisableRange<float> distortionType (0, 7);
-    NormalisableRange<float> distortionAmplitude (0.0f, 1000.0f);
-    NormalisableRange<float> distortionRatio (0.0f, 1.0f);
+    NormalisableRange<float> distortionAmplitude (0.0, 100.f);
+    NormalisableRange<float> distortionRatio (0, 1);
     tree.createAndAddParameter("distortionType", "DistortionType", "distortionType", distortionType, 0, nullptr, nullptr);
     tree.createAndAddParameter("distortionAmplitude", "DistortionAmplitude", "distortionAmplitude", distortionAmplitude, 0, nullptr, nullptr);
     tree.createAndAddParameter("distortionRatio", "DistortionRatio", "distortionRatio", distortionRatio, 0, nullptr, nullptr);
@@ -162,6 +162,9 @@ void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int sam
     stateVariableFilter.prepare(spec);
     keyboardState.reset();
     updateFilter();
+
+    const int delayBufferSize = 2 * (sampleRate * samplesPerBlock);
+    mDelayBuffer.setSize(getTotalNumInputChannels(), delayBufferSize);
 }
 
 void JuceSynthFrameworkAudioProcessor::releaseResources()
@@ -223,8 +226,8 @@ void JuceSynthFrameworkAudioProcessor::updateFilter()
 void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
-    //const int totalNumInputChannels  = getTotalNumInputChannels();
-    //const int totalNumOutputChannels = getTotalNumOutputChannels();
+    const int totalNumInputChannels  = getTotalNumInputChannels();
+    const int totalNumOutputChannels = getTotalNumOutputChannels();
 
     //get the voice and get the params needed to make the voice
     for (int i = 0; i < mySynth.getNumVoices(); i++)
@@ -256,12 +259,26 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
 
     dsp::AudioBlock<float> block (buffer);
 
+    // Distortion
     for (int i = 0; i < buffer.getNumSamples(); ++i) {
         float* const samples = buffer.getWritePointer(0);
-        //std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
+        std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
         samples[i] = dist->processSample(samples[i], *tree.getRawParameterValue("distortionType"), *tree.getRawParameterValue("distortionAmplitude"), *tree.getRawParameterValue("distortionRatio"));
     }
 
+    // Delay
+    for (int channel = 0; channel < totalNumInputChannels; ++channel){
+        const int bufferLenght = buffer.getNumChannels();
+        const int delayBufferLenght = mDelayBuffer.getNumChannels();
+
+        const float* bufferData = buffer.getReadPointer(channel);
+        const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
+
+        mWritePosition += bufferLenght;
+        mWritePosition %= delayBufferLenght;
+    }
+
+    // Reverb
     if (*tree.getRawParameterValue("turn")) {
         theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
         theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
@@ -274,10 +291,22 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
         else
             theReverb.processStereo(buffer.getWritePointer(0), buffer.getWritePointer(1), buffer.getNumSamples());
     }
-    stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 
+    // Filter
+    stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 }
 
+void JuceSynthFrameworkAudioProcessor::fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData)
+{
+    if (delayBufferLenght > bufferLenght + mWritePosition){
+        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferLenght, 0.8, 0.8);
+    } else {
+        const int bufferRemaining = delayBufferLenght - mWritePosition;
+
+        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferRemaining, 0.8, 0.8);
+        mDelayBuffer.copyFromWithRamp(channel, 0, bufferData, bufferLenght - bufferRemaining, 0.8, 0.8);
+    }
+}
 //==============================================================================
 bool JuceSynthFrameworkAudioProcessor::hasEditor() const
 {

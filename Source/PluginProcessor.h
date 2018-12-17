@@ -59,6 +59,8 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     void updateFilter();
+
+    void fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
     
     AudioProcessorValueTreeState tree;
 
@@ -76,6 +78,9 @@ private:
     dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
     
     double lastSampleRate;
+
+    AudioSampleBuffer mDelayBuffer;
+    int mWritePosition { 0 };
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JuceSynthFrameworkAudioProcessor)

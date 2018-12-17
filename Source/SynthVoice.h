@@ -15,7 +15,7 @@
 #include "Maximilian/maximilian.h"
 
 
-class SynthVoice : public SynthesiserVoice
+    class SynthVoice : public SynthesiserVoice
 {
 public:
     bool canPlaySound (SynthesiserSound* sound) override

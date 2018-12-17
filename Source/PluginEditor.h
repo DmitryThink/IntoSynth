@@ -17,6 +17,7 @@
 #include "Filter.h"
 #include "ReverbSliders.h"
 #include "DistortionGUI.h"
+#include "DelayGUI.h"
 
 
 //==============================================================================
@@ -45,6 +46,7 @@ private:
     Filter filterGui;
     ReverbSliders reverbGui;
     DistortionGUI distortionGUI;
+    DelayGUI delayGUI;
 
     MidiKeyboardComponent keyboardComponent;
 

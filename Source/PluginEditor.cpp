@@ -14,15 +14,16 @@
 
 //==============================================================================
 JuceSynthFrameworkAudioProcessorEditor::JuceSynthFrameworkAudioProcessorEditor (JuceSynthFrameworkAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor(p), oscGui(p), envGui(p), filterGui(p), reverbGui(p), distortionGUI(p), keyboardComponent (p.keyboardState, MidiKeyboardComponent::horizontalKeyboard)
+    : AudioProcessorEditor (&p), processor(p), oscGui(p), envGui(p), filterGui(p), reverbGui(p), distortionGUI(p), delayGUI(p), keyboardComponent (p.keyboardState, MidiKeyboardComponent::horizontalKeyboard)
 {
-    setSize (800, 500);
+    setSize (600, 500);
     
     addAndMakeVisible(&oscGui);
     addAndMakeVisible(&envGui);
     addAndMakeVisible(&filterGui);
     addAndMakeVisible(&reverbGui);
     addAndMakeVisible(&distortionGUI);
+    addAndMakeVisible(&delayGUI);
     addAndMakeVisible(keyboardComponent);
 }
 
@@ -47,9 +48,10 @@ void JuceSynthFrameworkAudioProcessorEditor::resized()
     oscGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
     filterGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
     envGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
-    reverbGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
 
     distortionGUI.setBounds(0, 200, 200, 200);
+    reverbGui.setBounds(200, 200, 200, 200);
+    delayGUI.setBounds(400, 200, 200, 200);
     keyboardComponent.setBounds (0, getHeight()-100, getWidth(), 100);
 }
 
