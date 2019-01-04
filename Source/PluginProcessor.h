@@ -61,6 +61,7 @@ public:
     void updateFilter();
 
     void fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
+    void getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
     
     AudioProcessorValueTreeState tree;
 
@@ -78,6 +79,7 @@ private:
     dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
     
     double lastSampleRate;
+    int mSampleRate { 44100 };
 
     AudioSampleBuffer mDelayBuffer;
     int mWritePosition { 0 };

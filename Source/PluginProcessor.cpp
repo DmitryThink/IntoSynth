@@ -163,8 +163,11 @@ void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int sam
     keyboardState.reset();
     updateFilter();
 
-    const int delayBufferSize = 2 * (sampleRate * samplesPerBlock);
-    mDelayBuffer.setSize(getTotalNumInputChannels(), delayBufferSize);
+    mSampleRate = sampleRate;
+    const int totalNumInputChannels  = getTotalNumOutputChannels();
+
+    // sample buffer for 2 seconds + 2 buffers safety
+    mDelayBuffer.setSize (totalNumInputChannels, 2.0 * (samplesPerBlock + sampleRate), false, true);
 }
 
 void JuceSynthFrameworkAudioProcessor::releaseResources()
@@ -252,6 +255,8 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
     keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
 
     buffer.clear();
+    for(auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+      buffer.clear(i, 0, buffer.getNumChannels());
 
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
@@ -262,21 +267,23 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
     // Distortion
     for (int i = 0; i < buffer.getNumSamples(); ++i) {
         float* const samples = buffer.getWritePointer(0);
-        std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
+        //std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
         samples[i] = dist->processSample(samples[i], *tree.getRawParameterValue("distortionType"), *tree.getRawParameterValue("distortionAmplitude"), *tree.getRawParameterValue("distortionRatio"));
     }
 
     // Delay
-    for (int channel = 0; channel < totalNumInputChannels; ++channel){
-        const int bufferLenght = buffer.getNumChannels();
-        const int delayBufferLenght = mDelayBuffer.getNumChannels();
+    const int bufferLenght = buffer.getNumSamples();
+    const int delayBufferLenght = mDelayBuffer.getNumSamples();
 
-        const float* bufferData = buffer.getReadPointer(channel);
-        const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
+    for(int channel = 0; channel < totalNumOutputChannels; ++channel){
+      const float* bufferData = buffer.getReadPointer(channel);
+      const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
 
-        mWritePosition += bufferLenght;
-        mWritePosition %= delayBufferLenght;
+      fillDelayBuffer(channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
+      getFromDelayBuffer(buffer, channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
     }
+    mWritePosition += bufferLenght;
+    mWritePosition %= delayBufferLenght;
 
     // Reverb
     if (*tree.getRawParameterValue("turn")) {
@@ -307,6 +314,20 @@ void JuceSynthFrameworkAudioProcessor::fillDelayBuffer(int channel, const int bu
         mDelayBuffer.copyFromWithRamp(channel, 0, bufferData, bufferLenght - bufferRemaining, 0.8, 0.8);
     }
 }
+
+void JuceSynthFrameworkAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData){
+    int delayTime = 600;
+    const int readPosition = (delayBufferLenght + mWritePosition - (mSampleRate * delayTime/1000)) % delayBufferLenght;
+
+    if(delayBufferLenght > bufferLenght + readPosition) {
+        buffer.addFrom(channel, 0, delayBufferData + readPosition, bufferLenght);
+    }else{
+        const int bufferRemaining = delayBufferLenght - readPosition;
+        buffer.addFrom(channel, 0, delayBufferData + readPosition, bufferRemaining);
+        buffer.addFrom(channel, bufferRemaining, delayBufferData, bufferLenght - bufferRemaining);
+    }
+}
+
 //==============================================================================
 bool JuceSynthFrameworkAudioProcessor::hasEditor() const
 {
