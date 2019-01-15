@@ -14,11 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Builds/CLion/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Builds/CLion/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Oscillator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OscillatorGUI.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Oscillator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OscillatorGUI.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/PluginEditor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PluginEditor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/juceSynthFramework.jucer" beforeDir="false" afterPath="$PROJECT_DIR$/juceSynthFramework.jucer" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Builds/CLion/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,11 +61,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="528">
+              <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -76,11 +86,6 @@
               <caret line="703" column="11" selection-start-line="703" selection-start-column="11" selection-end-line="703" selection-end-column="11" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Builds/CLion/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -198,6 +203,7 @@
         <option value="$PROJECT_DIR$/Source/SynthVoice.h" />
         <option value="$PROJECT_DIR$/Source/PluginProcessor.h" />
         <option value="$PROJECT_DIR$/Source/PluginProcessor.cpp" />
+        <option value="$PROJECT_DIR$/Source/OscillatorGUI.h" />
         <option value="$PROJECT_DIR$/Source/OscillatorGUI.cpp" />
       </list>
     </option>
@@ -352,12 +358,12 @@
       <workItem from="1547421325573" duration="866000" />
       <workItem from="1547422280302" duration="332000" />
       <workItem from="1547456615557" duration="365000" />
-      <workItem from="1547558102022" duration="924000" />
+      <workItem from="1547558102022" duration="1236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82721000" />
+    <option name="totallyTimeSpent" value="83033000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,24 +376,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-1" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17235859" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17235859" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32992566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23908296" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23849373" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3853606" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899627" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32984293" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3294979" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32969433" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32606325" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.31113538" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.31066945" />
       <window_info anchor="bottom" id="SonarQube" order="13" />
       <window_info anchor="bottom" id="SonarLint" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -486,9 +491,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.h">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../JUCE/modules/juce_gui_basics/buttons/juce_ToggleButton.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -737,8 +739,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="528">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -17,16 +17,16 @@ processor(p)
 {
     setSize(200, 200);
     
-    oscMenu.addItem("Sine", 1);
-    oscMenu.addItem("Saw", 2);
-    oscMenu.addItem("Square", 3);
-    oscMenu.addItem("Noise", 4);
-    oscMenu.addItem("Sawn", 5);
-    oscMenu.setJustificationType(Justification::centred);
-    addAndMakeVisible(&oscMenu);
-    oscMenu.addListener(this);
+    oscComboBox.addItem("Sine", 1);
+    oscComboBox.addItem("Saw", 2);
+    oscComboBox.addItem("Square", 3);
+    oscComboBox.addItem("Noise", 4);
+    oscComboBox.addItem("Sawn", 5);
+    oscComboBox.setJustificationType(Justification::centred);
+    addAndMakeVisible(&oscComboBox);
+    oscComboBox.addListener(this);
 
-    oscSelection = new AudioProcessorValueTreeState::ComboBoxAttachment (processor.tree, "wavetype", oscMenu);
+    oscSelection = new AudioProcessorValueTreeState::ComboBoxAttachment (processor.tree, "wavetype", oscComboBox);
 }
 
 OscillatorGUI::~OscillatorGUI()
@@ -51,7 +51,7 @@ void OscillatorGUI::paint (Graphics& g)
 void OscillatorGUI::resized()
 {
     Rectangle<int> area = getLocalBounds().reduced(40);
-    oscMenu.setBounds(area.removeFromTop(20));
+    oscComboBox.setBounds(area.removeFromTop(20));
 }
 
 void OscillatorGUI::comboBoxChanged(ComboBox* box)

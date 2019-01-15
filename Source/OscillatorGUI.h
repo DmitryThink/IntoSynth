@@ -29,7 +29,7 @@ public:
     void comboBoxChanged(ComboBox*) override;
 
 private:
-    ComboBox oscMenu;
+    ComboBox oscComboBox;
     ScopedPointer<AudioProcessorValueTreeState::ComboBoxAttachment> oscSelection;
     
     // This reference is provided as a quick way for your editor to
