@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
-#include "Oscillator.h"
+#include "OscillatorGUI.h"
 #include "Envelope.h"
 #include "Filter.h"
 #include "ReverbSliders.h"
@@ -41,7 +41,7 @@ private:
     // access the processor object that created it.
     JuceSynthFrameworkAudioProcessor& processor;
     
-    Oscillator oscGui;
+    OscillatorGUI oscGui;
     Envelope envGui;
     Filter filterGui;
     ReverbSliders reverbGui;
