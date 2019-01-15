@@ -11,7 +11,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DistortionGUI.h"
 //==============================================================================
-DistortionGUI::DistortionGUI(JuceSynthFrameworkAudioProcessor& p) :
+DistortionGUI::DistortionGUI(ThinkSynthAudioProcessor& p) :
         processor(p)
 {
     setSize(200, 200);

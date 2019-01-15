@@ -12,7 +12,7 @@
 #include "Filter.h"
 
 //==============================================================================
-Filter::Filter(JuceSynthFrameworkAudioProcessor& p) :
+Filter::Filter(ThinkSynthAudioProcessor& p) :
 processor(p)
 {
     setSize(200, 200);

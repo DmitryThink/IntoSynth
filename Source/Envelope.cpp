@@ -12,7 +12,7 @@
 #include "Envelope.h"
 
 //==============================================================================
-Envelope::Envelope(JuceSynthFrameworkAudioProcessor& p) :
+Envelope::Envelope(ThinkSynthAudioProcessor& p) :
 processor(p)
 {
     setSize(200, 200);

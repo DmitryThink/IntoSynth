@@ -18,12 +18,12 @@
 //==============================================================================
 /**
 */
-class JuceSynthFrameworkAudioProcessor  : public AudioProcessor
+class ThinkSynthAudioProcessor  : public AudioProcessor
 {
 public:
     //==============================================================================
-    JuceSynthFrameworkAudioProcessor();
-    ~JuceSynthFrameworkAudioProcessor();
+    ThinkSynthAudioProcessor();
+    ~ThinkSynthAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -85,5 +85,5 @@ private:
     int mWritePosition { 0 };
     
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JuceSynthFrameworkAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThinkSynthAudioProcessor)
 };

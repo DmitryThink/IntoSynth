@@ -13,32 +13,32 @@
 
 
 //==============================================================================
-JuceSynthFrameworkAudioProcessorEditor::JuceSynthFrameworkAudioProcessorEditor (JuceSynthFrameworkAudioProcessor& p)
+ThinkSynthProcessorEditor::ThinkSynthProcessorEditor (ThinkSynthAudioProcessor& p)
     : AudioProcessorEditor (&p), processor(p), oscGui(p), envGui(p), filterGui(p), reverbGui(p), distortionGUI(p), delayGUI(p), keyboardComponent (p.keyboardState, MidiKeyboardComponent::horizontalKeyboard)
 {
     setSize (600, 500);
     
     addAndMakeVisible(&oscGui);
-    addAndMakeVisible(&envGui);
-    addAndMakeVisible(&filterGui);
-    addAndMakeVisible(&reverbGui);
-    addAndMakeVisible(&distortionGUI);
-    addAndMakeVisible(&delayGUI);
-    addAndMakeVisible(keyboardComponent);
+//    addAndMakeVisible(&envGui);
+//    addAndMakeVisible(&filterGui);
+//    addAndMakeVisible(&reverbGui);
+//    addAndMakeVisible(&distortionGUI);
+//    addAndMakeVisible(&delayGUI);
+//    addAndMakeVisible(keyboardComponent);
 }
 
-JuceSynthFrameworkAudioProcessorEditor::~JuceSynthFrameworkAudioProcessorEditor()
+ThinkSynthProcessorEditor::~ThinkSynthProcessorEditor()
 {
 }
 
 //==============================================================================
-void JuceSynthFrameworkAudioProcessorEditor::paint (Graphics& g)
+void ThinkSynthProcessorEditor::paint (Graphics& g)
 {
     g.fillAll(Colours::black);
 
 }
 
-void JuceSynthFrameworkAudioProcessorEditor::resized()
+void ThinkSynthProcessorEditor::resized()
 {
     Rectangle<int> area = getLocalBounds();
     

@@ -23,12 +23,12 @@
 //==============================================================================
 /**
 */
-class JuceSynthFrameworkAudioProcessorEditor  : public AudioProcessorEditor
+class ThinkSynthProcessorEditor  : public AudioProcessorEditor
 
 {
 public:
-    JuceSynthFrameworkAudioProcessorEditor (JuceSynthFrameworkAudioProcessor&);
-    ~JuceSynthFrameworkAudioProcessorEditor();
+    ThinkSynthProcessorEditor (ThinkSynthAudioProcessor&);
+    ~ThinkSynthProcessorEditor();
 
     //==============================================================================
     void paint (Graphics&) override;
@@ -39,7 +39,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    JuceSynthFrameworkAudioProcessor& processor;
+    ThinkSynthAudioProcessor& processor;
     
     OscillatorGUI oscGui;
     Envelope envGui;
@@ -50,5 +50,5 @@ private:
 
     MidiKeyboardComponent keyboardComponent;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JuceSynthFrameworkAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ThinkSynthProcessorEditor)
 };

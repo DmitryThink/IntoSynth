@@ -13,7 +13,7 @@
 
 
 //==============================================================================
-JuceSynthFrameworkAudioProcessor::JuceSynthFrameworkAudioProcessor()
+ThinkSynthAudioProcessor::ThinkSynthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
@@ -79,17 +79,17 @@ tree(*this, nullptr)
     mySynth.addSound(new SynthSound());
 }
 
-JuceSynthFrameworkAudioProcessor::~JuceSynthFrameworkAudioProcessor()
+ThinkSynthAudioProcessor::~ThinkSynthAudioProcessor()
 {
 }
 
 //==============================================================================
-const String JuceSynthFrameworkAudioProcessor::getName() const
+const String ThinkSynthAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool JuceSynthFrameworkAudioProcessor::acceptsMidi() const
+bool ThinkSynthAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -98,7 +98,7 @@ bool JuceSynthFrameworkAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool JuceSynthFrameworkAudioProcessor::producesMidi() const
+bool ThinkSynthAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -107,7 +107,7 @@ bool JuceSynthFrameworkAudioProcessor::producesMidi() const
    #endif
 }
 
-bool JuceSynthFrameworkAudioProcessor::isMidiEffect() const
+bool ThinkSynthAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -116,37 +116,37 @@ bool JuceSynthFrameworkAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double JuceSynthFrameworkAudioProcessor::getTailLengthSeconds() const
+double ThinkSynthAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int JuceSynthFrameworkAudioProcessor::getNumPrograms()
+int ThinkSynthAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int JuceSynthFrameworkAudioProcessor::getCurrentProgram()
+int ThinkSynthAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void JuceSynthFrameworkAudioProcessor::setCurrentProgram (int index)
+void ThinkSynthAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const String JuceSynthFrameworkAudioProcessor::getProgramName (int index)
+const String ThinkSynthAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void JuceSynthFrameworkAudioProcessor::changeProgramName (int index, const String& newName)
+void ThinkSynthAudioProcessor::changeProgramName (int index, const String& newName)
 {
 }
 
 //==============================================================================
-void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void ThinkSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     ignoreUnused(samplesPerBlock);
     lastSampleRate = sampleRate;
@@ -170,7 +170,7 @@ void JuceSynthFrameworkAudioProcessor::prepareToPlay (double sampleRate, int sam
     mDelayBuffer.setSize (totalNumInputChannels, 2.0 * (samplesPerBlock + sampleRate), false, true);
 }
 
-void JuceSynthFrameworkAudioProcessor::releaseResources()
+void ThinkSynthAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
@@ -178,7 +178,7 @@ void JuceSynthFrameworkAudioProcessor::releaseResources()
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool JuceSynthFrameworkAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool ThinkSynthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
@@ -201,7 +201,7 @@ bool JuceSynthFrameworkAudioProcessor::isBusesLayoutSupported (const BusesLayout
 }
 #endif
 
-void JuceSynthFrameworkAudioProcessor::updateFilter()
+void ThinkSynthAudioProcessor::updateFilter()
 {
     int menuChoice = *tree.getRawParameterValue("filterType");
     int freq = *tree.getRawParameterValue("filterCutoff");
@@ -226,7 +226,7 @@ void JuceSynthFrameworkAudioProcessor::updateFilter()
     }
 }
 
-void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
     const int totalNumInputChannels  = getTotalNumInputChannels();
@@ -303,7 +303,7 @@ void JuceSynthFrameworkAudioProcessor::processBlock (AudioSampleBuffer& buffer, 
     stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 }
 
-void JuceSynthFrameworkAudioProcessor::fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData)
+void ThinkSynthAudioProcessor::fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData)
 {
     if (delayBufferLenght > bufferLenght + mWritePosition){
         mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferLenght, 0.8, 0.8);
@@ -315,7 +315,7 @@ void JuceSynthFrameworkAudioProcessor::fillDelayBuffer(int channel, const int bu
     }
 }
 
-void JuceSynthFrameworkAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData){
+void ThinkSynthAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData){
     int delayTime = 600;
     const int readPosition = (delayBufferLenght + mWritePosition - (mSampleRate * delayTime/1000)) % delayBufferLenght;
 
@@ -329,25 +329,25 @@ void JuceSynthFrameworkAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& bu
 }
 
 //==============================================================================
-bool JuceSynthFrameworkAudioProcessor::hasEditor() const
+bool ThinkSynthAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* JuceSynthFrameworkAudioProcessor::createEditor()
+AudioProcessorEditor* ThinkSynthAudioProcessor::createEditor()
 {
-    return new JuceSynthFrameworkAudioProcessorEditor (*this);
+    return new ThinkSynthProcessorEditor (*this);
 }
 
 //==============================================================================
-void JuceSynthFrameworkAudioProcessor::getStateInformation (MemoryBlock& destData)
+void ThinkSynthAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void JuceSynthFrameworkAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void ThinkSynthAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -357,5 +357,5 @@ void JuceSynthFrameworkAudioProcessor::setStateInformation (const void* data, in
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new JuceSynthFrameworkAudioProcessor();
+    return new ThinkSynthAudioProcessor();
 }

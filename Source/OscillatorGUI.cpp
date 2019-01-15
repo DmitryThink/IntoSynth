@@ -12,7 +12,7 @@
 #include "OscillatorGUI.h"
 
 //==============================================================================
-OscillatorGUI::OscillatorGUI(JuceSynthFrameworkAudioProcessor& p) :
+OscillatorGUI::OscillatorGUI(ThinkSynthAudioProcessor& p) :
 processor(p)
 {
     setSize(200, 200);

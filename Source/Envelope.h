@@ -19,7 +19,7 @@
 class Envelope    : public Component
 {
 public:
-    Envelope(JuceSynthFrameworkAudioProcessor&);
+    Envelope(ThinkSynthAudioProcessor&);
     ~Envelope();
 
     void paint (Graphics&) override;
@@ -40,7 +40,7 @@ private:
     
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    JuceSynthFrameworkAudioProcessor& processor;
+    ThinkSynthAudioProcessor& processor;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Envelope)
 };

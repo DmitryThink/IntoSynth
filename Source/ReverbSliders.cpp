@@ -12,7 +12,7 @@
 #include "ReverbSliders.h"
 
 //==============================================================================
-ReverbSliders::ReverbSliders(JuceSynthFrameworkAudioProcessor& p) :
+ReverbSliders::ReverbSliders(ThinkSynthAudioProcessor& p) :
         processor(p)
 {
     setSize(300, 300);

@@ -11,7 +11,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DelayGUI.h"
 //==============================================================================
-DelayGUI::DelayGUI(JuceSynthFrameworkAudioProcessor& p) :
+DelayGUI::DelayGUI(ThinkSynthAudioProcessor& p) :
     processor(p)
 {
   setSize(200, 200);
