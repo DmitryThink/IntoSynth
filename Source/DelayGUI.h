@@ -28,9 +28,13 @@ class DelayGUI    : public Component
  private:
   Slider time;
   Slider feedback;
+  Slider wet;
+  ToggleButton turn;
 
   ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> delayTime;
   ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> delayFeedback;
+  ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> delayWet;
+  ScopedPointer<AudioProcessorValueTreeState::ButtonAttachment> delayTurn;
 
   // This reference is provided as a quick way for your editor to
   // access the processor object that created it.

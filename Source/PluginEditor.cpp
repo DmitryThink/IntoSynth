@@ -19,12 +19,12 @@ ThinkSynthProcessorEditor::ThinkSynthProcessorEditor (ThinkSynthAudioProcessor& 
     setSize (600, 500);
     
     addAndMakeVisible(&oscGui);
-//    addAndMakeVisible(&envGui);
-//    addAndMakeVisible(&filterGui);
-//    addAndMakeVisible(&reverbGui);
-//    addAndMakeVisible(&distortionGUI);
-//    addAndMakeVisible(&delayGUI);
-//    addAndMakeVisible(keyboardComponent);
+    addAndMakeVisible(&envGui);
+    addAndMakeVisible(&filterGui);
+    addAndMakeVisible(&reverbGui);
+    addAndMakeVisible(&distortionGUI);
+    addAndMakeVisible(&delayGUI);
+    addAndMakeVisible(keyboardComponent);
 }
 
 ThinkSynthProcessorEditor::~ThinkSynthProcessorEditor()

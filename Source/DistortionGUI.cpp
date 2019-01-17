@@ -43,6 +43,9 @@ DistortionGUI::DistortionGUI(ThinkSynthAudioProcessor& p) :
     distortionRatio.setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
     addAndMakeVisible(&distortionRatio);
     ratioVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "distortionRatio", distortionRatio);
+
+    addAndMakeVisible(&turn);
+    distortionTurn = new AudioProcessorValueTreeState::ButtonAttachment (processor.tree, "distortionTurn", turn);
 }
 
 DistortionGUI::~DistortionGUI()
@@ -69,7 +72,9 @@ void DistortionGUI::resized()
     //need to come back and dynamically set these...ok for now
     Rectangle<int> area = getLocalBounds().reduced(40);
 
-    distortionMenu.setBounds(area.removeFromTop(20));
+    distortionMenu.setBounds(40, 70, 120, 20);
     distortionAmplitude.setBounds (30, 100, 70, 70);
     distortionRatio.setBounds (100, 100, 70, 70);
+
+    turn.setBounds (40, 40, 20, 20);
 }

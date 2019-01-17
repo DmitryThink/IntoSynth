@@ -48,7 +48,6 @@ ReverbSliders::ReverbSliders(ThinkSynthAudioProcessor& p) :
     widthSlider.setTextBoxStyle(Slider::NoTextBox, true, 0, 0);
     addAndMakeVisible(&widthSlider);
 
-    turnButton.setColour(TextEditor::ColourIds::highlightedTextColourId, Colours::hotpink);
     addAndMakeVisible(&turnButton);
 
     roomSizeVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "roomSize", roomSizeSlider);
@@ -56,7 +55,7 @@ ReverbSliders::ReverbSliders(ThinkSynthAudioProcessor& p) :
     wetLevelVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "wetLevel", wetLevelSlider);
     dryLevelVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "dryLevel", dryLevelSlider);
     widthVal = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "width", roomSizeSlider);
-    turnButtonVal = new AudioProcessorValueTreeState::ButtonAttachment (processor.tree, "turn", turnButton);
+    turnButtonVal = new AudioProcessorValueTreeState::ButtonAttachment (processor.tree, "reverbTurn", turnButton);
 }
 
 ReverbSliders::~ReverbSliders()

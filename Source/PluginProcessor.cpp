@@ -60,7 +60,15 @@ tree(*this, nullptr)
     tree.createAndAddParameter("wetLevel", "WetLevel", "wetLevel", wetLevelVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("damping", "Damping", "damping", dampingVal, 0, nullptr, nullptr);
     tree.createAndAddParameter("width", "Width", "width", widthVal, 0, nullptr, nullptr);
-    tree.createAndAddParameter("turn", "Turn", "turn", buttonRange, 0, nullptr, nullptr);
+    tree.createAndAddParameter("reverbTurn", "ReverbTurn", "turn", buttonRange, 0, nullptr, nullptr);
+
+    NormalisableRange<float> delayWetVal (0.0f, 1.0f);
+    NormalisableRange<float> delayFeedbackVal (0.0f, 1.0f);
+    NormalisableRange<float> delayTimeVal (0.0f, 2000.0f);
+    tree.createAndAddParameter("delayWet", "DelayWet", "delayWet", delayWetVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("delayFeedback", "DelayFeedback", "delayFeedback", delayFeedbackVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("delayTime", "DelayTime", "delayTime", delayTimeVal, 0, nullptr, nullptr);
+    tree.createAndAddParameter("delayTurn", "DelayTurn", "delayTurn", buttonRange, 0, nullptr, nullptr);
 
     NormalisableRange<float> distortionType (0, 7);
     NormalisableRange<float> distortionAmplitude (0.0, 100.f);
@@ -68,6 +76,7 @@ tree(*this, nullptr)
     tree.createAndAddParameter("distortionType", "DistortionType", "distortionType", distortionType, 0, nullptr, nullptr);
     tree.createAndAddParameter("distortionAmplitude", "DistortionAmplitude", "distortionAmplitude", distortionAmplitude, 0, nullptr, nullptr);
     tree.createAndAddParameter("distortionRatio", "DistortionRatio", "distortionRatio", distortionRatio, 0, nullptr, nullptr);
+    tree.createAndAddParameter("distortionTurn", "DistortionTurn", "distortionTurn", buttonRange, 0, nullptr, nullptr);
 
     mySynth.clearVoices();
     
@@ -265,28 +274,21 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
     dsp::AudioBlock<float> block (buffer);
 
     // Distortion
-    for (int i = 0; i < buffer.getNumSamples(); ++i) {
-        float* const samples = buffer.getWritePointer(0);
-        //std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
-        samples[i] = dist->processSample(samples[i], *tree.getRawParameterValue("distortionType"), *tree.getRawParameterValue("distortionAmplitude"), *tree.getRawParameterValue("distortionRatio"));
+    if (*tree.getRawParameterValue("distortionTurn")) {
+        for (int channel = 0; channel < totalNumOutputChannels; ++channel) {
+            for (int i = 0; i < buffer.getNumSamples(); ++i) {
+                float *const samples = buffer.getWritePointer(channel);
+                //std::cout << *tree.getRawParameterValue("distortionType") << " " << *tree.getRawParameterValue("distortionAmplitude") << " " << *tree.getRawParameterValue("distortionRatio") << std::endl;
+                samples[i] = dist->processSample(samples[i],
+                                                 *tree.getRawParameterValue("distortionType"),
+                                                 *tree.getRawParameterValue("distortionAmplitude"),
+                                                 *tree.getRawParameterValue("distortionRatio"));
+            }
+        }
     }
-
-    // Delay
-    const int bufferLenght = buffer.getNumSamples();
-    const int delayBufferLenght = mDelayBuffer.getNumSamples();
-
-    for(int channel = 0; channel < totalNumOutputChannels; ++channel){
-      const float* bufferData = buffer.getReadPointer(channel);
-      const float* delayBufferData = mDelayBuffer.getReadPointer(channel);
-
-      fillDelayBuffer(channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
-      getFromDelayBuffer(buffer, channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
-    }
-    mWritePosition += bufferLenght;
-    mWritePosition %= delayBufferLenght;
 
     // Reverb
-    if (*tree.getRawParameterValue("turn")) {
+    if (*tree.getRawParameterValue("reverbTurn")) {
         theReverbParameters.roomSize = *tree.getRawParameterValue("roomSize");
         theReverbParameters.dryLevel = *tree.getRawParameterValue("dryLevel");
         theReverbParameters.wetLevel = *tree.getRawParameterValue("wetLevel");
@@ -299,24 +301,43 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
             theReverb.processStereo(buffer.getWritePointer(0), buffer.getWritePointer(1), buffer.getNumSamples());
     }
 
+    // Delay
+    if (*tree.getRawParameterValue("delayTurn")) {
+        const int bufferLenght = buffer.getNumSamples();
+        const int delayBufferLenght = mDelayBuffer.getNumSamples();
+
+        for (int channel = 0; channel < totalNumOutputChannels; ++channel) {
+            const float *bufferData = buffer.getReadPointer(channel);
+            const float *delayBufferData = mDelayBuffer.getReadPointer(channel);
+            float *dryBuffer = buffer.getWritePointer(channel);
+
+            fillDelayBuffer(channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
+            getFromDelayBuffer(buffer, channel, bufferLenght, delayBufferLenght, bufferData, delayBufferData);
+            feedbackDelay(channel, bufferLenght, delayBufferLenght, dryBuffer);
+        }
+        mWritePosition += bufferLenght;
+        mWritePosition %= delayBufferLenght;
+    }
+
     // Filter
     stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
 }
 
 void ThinkSynthAudioProcessor::fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData)
 {
+    double wet = *tree.getRawParameterValue("delayWet");
     if (delayBufferLenght > bufferLenght + mWritePosition){
-        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferLenght, 0.8, 0.8);
+        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferLenght, wet, wet);
     } else {
         const int bufferRemaining = delayBufferLenght - mWritePosition;
 
-        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferRemaining, 0.8, 0.8);
-        mDelayBuffer.copyFromWithRamp(channel, 0, bufferData, bufferLenght - bufferRemaining, 0.8, 0.8);
+        mDelayBuffer.copyFromWithRamp(channel, mWritePosition, bufferData, bufferRemaining, wet, wet);
+        mDelayBuffer.copyFromWithRamp(channel, 0, bufferData, bufferLenght - bufferRemaining, wet, wet);
     }
 }
 
 void ThinkSynthAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData){
-    int delayTime = 600;
+    int delayTime = *tree.getRawParameterValue("delayTime");
     const int readPosition = (delayBufferLenght + mWritePosition - (mSampleRate * delayTime/1000)) % delayBufferLenght;
 
     if(delayBufferLenght > bufferLenght + readPosition) {
@@ -327,7 +348,17 @@ void ThinkSynthAudioProcessor::getFromDelayBuffer(AudioBuffer<float>& buffer, in
         buffer.addFrom(channel, bufferRemaining, delayBufferData, bufferLenght - bufferRemaining);
     }
 }
-
+void ThinkSynthAudioProcessor::feedbackDelay(int channel, const int bufferLenght,
+    const int delayBufferLenght, float* dryBuffer){
+    double feedback = *tree.getRawParameterValue("delayFeedback");
+    if (delayBufferLenght > bufferLenght + mWritePosition){
+        mDelayBuffer.addFromWithRamp(channel, mWritePosition, dryBuffer, bufferLenght, feedback, feedback);
+    }else{
+        const int bufferRemaining = delayBufferLenght - mWritePosition;
+        mDelayBuffer.addFromWithRamp(channel, bufferRemaining, dryBuffer, bufferRemaining, feedback, feedback);
+        mDelayBuffer.addFromWithRamp(channel, 0, dryBuffer, bufferLenght - bufferRemaining, feedback, feedback);
+    }
+}
 //==============================================================================
 bool ThinkSynthAudioProcessor::hasEditor() const
 {

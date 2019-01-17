@@ -62,7 +62,8 @@ public:
 
     void fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
     void getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
-    
+    void feedbackDelay(int channel, const int bufferLenght, const int delayBufferLenght, float* dryBuffer);
+
     AudioProcessorValueTreeState tree;
 
     MidiKeyboardState keyboardState;

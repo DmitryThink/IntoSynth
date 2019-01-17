@@ -28,12 +28,13 @@ public:
 private:
     Slider distortionAmplitude;
     Slider distortionRatio;
-
     ComboBox distortionMenu;
+    ToggleButton turn;
 
     ScopedPointer<AudioProcessorValueTreeState::ComboBoxAttachment> distortionTypeVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> distortionVal;
     ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> ratioVal;
+    ScopedPointer<AudioProcessorValueTreeState::ButtonAttachment> distortionTurn;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
