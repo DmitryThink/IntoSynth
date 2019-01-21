@@ -13,7 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 #include "OscillatorGUI.h"
-#include "Envelope.h"
+#include "EnvelopeGUI.h"
 #include "Filter.h"
 #include "ReverbSliders.h"
 #include "DistortionGUI.h"
@@ -42,7 +42,7 @@ private:
     ThinkSynthAudioProcessor& processor;
     
     OscillatorGUI oscGui;
-    Envelope envGui;
+    EnvelopeGUI envGui;
     Filter filterGui;
     ReverbSliders reverbGui;
     DistortionGUI distortionGUI;
