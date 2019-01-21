@@ -15,25 +15,20 @@
 #include "Maximilian/maximilian.h"
 
 
-    class ThinkSynthVoice : public SynthesiserVoice
+class ThinkSynthVoice : public SynthesiserVoice
 {
 public:
     bool canPlaySound (SynthesiserSound* sound) override
     {
         return dynamic_cast <ThinkSynthSound*>(sound) != nullptr;
     }
-    
-    
-    //=======================================================
-    
-    void getOscType(float* selection)
+
+    void setOscillatorType(float *selection)
     {
         oscillatorType = *selection;
     }
 
-    //=======================================================
-    
-    double setOscType ()
+    double getOscillator()
     {
         switch (oscillatorType){
             case 0:
@@ -50,46 +45,35 @@ public:
                 return oscillator.sinewave(frequency);
         }
     }
-    
-    //=======================================================
-    
-    void getEnvelopeParams(float* attack, float* decay, float* sustain, float* release)
+
+    void setEnvelopeParams(float *attack, float *decay, float *sustain, float *release)
     {
         envelope.setAttack(*attack);
         envelope.setDecay(*decay);
         envelope.setSustain(*sustain);
         envelope.setRelease(*release);
     }
-    
-    //=======================================================
-    
-    double setEnvelope()
+
+    double getEnvelope()
     {
-        return envelope.adsr(setOscType(), envelope.trigger);
+        return envelope.adsr(getOscillator(), envelope.trigger);
     }
-    
-    //=======================================================
-    
-    
-    void getFilterParams (float* filterType, float* filterCutoff, float* filterRes)
+
+    void setFilterParams(float *filterType, float *filterCutoff, float *filterRes)
     {
         filterChoice = *filterType;
         cutoff = *filterCutoff;
         resonance = *filterRes;
     }
-    
-    //=======================================================
-    
-    void startNote (int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition) override
+
+    void startNote(int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition) override
     {
         envelope.trigger = 1;
         frequency = MidiMessage::getMidiNoteInHertz(midiNoteNumber);
         level = velocity;
     }
-    
-    //=======================================================
-    
-    void stopNote (float velocity, bool allowTailOff) override
+
+    void stopNote(float velocity, bool allowTailOff) override
     {
         envelope.trigger = 0;
         allowTailOff = true;
@@ -97,36 +81,23 @@ public:
         if (velocity == 0)
             clearCurrentNote();
     }
-    
-    //=======================================================
-    
-    void pitchWheelMoved (int newPitchWheelValue) override
-    {
-        
-    }
-    
-    //=======================================================
-    
-    void controllerMoved (int controllerNumber, int newControllerValue) override
-    {
-        
-    }
-    
-    //=======================================================
-    
-    void renderNextBlock (AudioBuffer <float> &outputBuffer, int startSample, int numSamples) override
+
+    void pitchWheelMoved(int newPitchWheelValue) override{}
+
+    void controllerMoved(int controllerNumber, int newControllerValue) override{}
+
+    void renderNextBlock(AudioBuffer <float> &outputBuffer, int startSample, int numSamples) override
     {
         for (int sample = 0; sample < numSamples; ++sample)
         {
             for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel)
             {
-                outputBuffer.addSample(channel, startSample, setEnvelope() * 0.3f);
+                outputBuffer.addSample(channel, startSample, getEnvelope() * 0.3f);
             }
             ++startSample;
         }
     }
-    
-    //=======================================================
+
 private:
     maxiOsc oscillator;
     int oscillatorType;

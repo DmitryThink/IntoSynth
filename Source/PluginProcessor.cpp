@@ -247,16 +247,16 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
         //if myVoice sucessfully casts as a SynthVoice*, get the voice and set the params
         if ((myVoice = dynamic_cast<ThinkSynthVoice*>(mySynth.getVoice(i))))
         {
-            myVoice->getEnvelopeParams(tree.getRawParameterValue("attack"),
-                                       tree.getRawParameterValue("decay"),
-                                       tree.getRawParameterValue("sustain"),
-                                       tree.getRawParameterValue("release"));
-            
-            myVoice->getOscType(tree.getRawParameterValue("wavetype"));
-            
-            myVoice->getFilterParams(tree.getRawParameterValue("filterType"),
-                                     tree.getRawParameterValue("filterCutoff"),
-                                     tree.getRawParameterValue("filterRes"));
+          myVoice->setEnvelopeParams(tree.getRawParameterValue("attack"),
+                                     tree.getRawParameterValue("decay"),
+                                     tree.getRawParameterValue("sustain"),
+                                     tree.getRawParameterValue("release"));
+
+          myVoice->setOscillatorType(tree.getRawParameterValue("wavetype"));
+
+          myVoice->setFilterParams(tree.getRawParameterValue("filterType"),
+                                   tree.getRawParameterValue("filterCutoff"),
+                                   tree.getRawParameterValue("filterRes"));
 
         }
     }
