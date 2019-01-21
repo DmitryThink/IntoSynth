@@ -13,12 +13,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/PluginProcessor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PluginProcessor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/PluginProcessor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PluginProcessor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/SynthVoice.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ThinkSynthVoice.h" afterDir="false" />
-    </list>
+    <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/Builds/CLion/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="538">
+              <caret line="136" column="21" selection-start-line="136" selection-start-column="21" selection-end-line="136" selection-end-column="21" />
               <folding>
                 <element signature="e#264#306#0" expanded="true" />
               </folding>
@@ -53,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/DistortionGUI.cpp">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/ThinkSynthSound.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+            <state relative-caret-position="420">
+              <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -224,6 +219,8 @@
         <option value="$PROJECT_DIR$/Source/PluginProcessor.cpp" />
         <option value="$PROJECT_DIR$/Source/SynthVoice.h" />
         <option value="$PROJECT_DIR$/Source/ThinkSynthVoice.h" />
+        <option value="$PROJECT_DIR$/Source/SynthSound.h" />
+        <option value="$PROJECT_DIR$/Source/ThinkSynthSound.h" />
       </list>
     </option>
   </component>
@@ -376,12 +373,12 @@
       <workItem from="1547558102022" duration="4871000" />
       <workItem from="1547722658132" duration="9380000" />
       <workItem from="1547819642645" duration="612000" />
-      <workItem from="1548061734427" duration="735000" />
+      <workItem from="1548061734427" duration="994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97395000" />
+    <option name="totallyTimeSpent" value="97654000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,12 +393,12 @@
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1782284" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1782284" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2378902" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2378902" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3853606" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -459,13 +456,6 @@
     <entry file="file://$PROJECT_DIR$/../JUCE/modules/juce_data_structures/values/juce_ValueTree.cpp" />
     <entry file="file://$PROJECT_DIR$/../JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h" />
     <entry file="file://$PROJECT_DIR$/../JUCE/modules/juce_audio_basics/effects/juce_Reverb.h" />
-    <entry file="file://$PROJECT_DIR$/Source/SynthSound.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Builds/CLion/CMakeLists.txt" />
     <entry file="file://$PROJECT_DIR$/../JUCE/modules/juce_core/maths/juce_NormalisableRange.h" />
     <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/linux/share/cmake-3.13/Modules/FindPkgConfig.cmake">
@@ -649,11 +639,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="538">
+          <caret line="136" column="21" selection-start-line="136" selection-start-column="21" selection-end-line="136" selection-end-column="21" />
           <folding>
             <element signature="e#264#306#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/ThinkSynthSound.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
         </state>
       </provider>
     </entry>

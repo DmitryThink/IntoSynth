@@ -28,14 +28,14 @@ public:
     
     void getOscType(float* selection)
     {
-        theWave = *selection;
+        oscillatorType = *selection;
     }
 
     //=======================================================
     
     double setOscType ()
     {
-        switch (theWave){
+        switch (oscillatorType){
             case 0:
                 return oscillator.sinewave(frequency);
             case 1:
@@ -129,11 +129,12 @@ public:
     //=======================================================
 private:
     maxiOsc oscillator;
+    int oscillatorType;
     maxiEnv envelope;
+
     double level;
     double frequency;
-    int theWave;
-    
+
     int filterChoice;
     float cutoff;
     float resonance;
