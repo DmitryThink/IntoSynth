@@ -92,7 +92,7 @@ public:
         {
             for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel)
             {
-                outputBuffer.addSample(channel, startSample, getEnvelope() * 0.3f);
+                outputBuffer.addSample(channel, startSample, getEnvelope());
             }
             ++startSample;
         }

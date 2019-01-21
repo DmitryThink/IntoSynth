@@ -14,7 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Source/PluginProcessor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PluginProcessor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ThinkSynthVoice.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ThinkSynthVoice.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Builds/CLion/cmake-build-debug/" />
@@ -27,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PluginProcessor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
+            <state relative-caret-position="-752">
+              <caret line="255" selection-start-line="255" selection-end-line="255" />
               <folding>
                 <element signature="e#276#304#0" expanded="true" />
               </folding>
@@ -51,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-542">
-              <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state relative-caret-position="493">
+              <caret line="94" column="74" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
               <folding>
                 <element signature="e#264#306#0" expanded="true" />
               </folding>
@@ -376,12 +375,12 @@
       <workItem from="1547558102022" duration="4871000" />
       <workItem from="1547722658132" duration="9380000" />
       <workItem from="1547819642645" duration="612000" />
-      <workItem from="1548061734427" duration="1921000" />
+      <workItem from="1548061734427" duration="2637000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98581000" />
+    <option name="totallyTimeSpent" value="99297000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,12 +395,12 @@
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1782284" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1782284" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.032292787" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.032292787" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3853606" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -637,22 +636,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
+    <entry file="file://$PROJECT_DIR$/Source/PluginProcessor.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-542">
-          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        <state relative-caret-position="-752">
+          <caret line="255" selection-start-line="255" selection-end-line="255" />
           <folding>
-            <element signature="e#264#306#0" expanded="true" />
+            <element signature="e#276#304#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PluginProcessor.cpp">
+    <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
+        <state relative-caret-position="493">
+          <caret line="94" column="74" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
           <folding>
-            <element signature="e#276#304#0" expanded="true" />
+            <element signature="e#264#306#0" expanded="true" />
           </folding>
         </state>
       </provider>
