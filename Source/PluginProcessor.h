@@ -11,8 +11,8 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "SynthVoice.h"
-#include "SynthSound.h"
+#include "ThinkSynthVoice.h"
+#include "ThinkSynthSound.h"
 #include "Distortion.h"
 
 //==============================================================================
@@ -70,7 +70,7 @@ public:
 
 private:
     Synthesiser mySynth;
-    SynthVoice* myVoice;
+    ThinkSynthVoice* myVoice;
 
     Reverb theReverb;
     Reverb::Parameters theReverbParameters;

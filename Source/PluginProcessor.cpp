@@ -82,10 +82,10 @@ tree(*this, nullptr)
     
     for (int i = 0; i < 5; i++)
     {
-        mySynth.addVoice(new SynthVoice());
+        mySynth.addVoice(new ThinkSynthVoice());
     }
     mySynth.clearSounds();
-    mySynth.addSound(new SynthSound());
+    mySynth.addSound(new ThinkSynthSound());
 }
 
 ThinkSynthAudioProcessor::~ThinkSynthAudioProcessor()
@@ -245,7 +245,7 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
     for (int i = 0; i < mySynth.getNumVoices(); i++)
     {
         //if myVoice sucessfully casts as a SynthVoice*, get the voice and set the params
-        if ((myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i))))
+        if ((myVoice = dynamic_cast<ThinkSynthVoice*>(mySynth.getVoice(i))))
         {
             myVoice->getEnvelopeParams(tree.getRawParameterValue("attack"),
                                        tree.getRawParameterValue("decay"),

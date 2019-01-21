@@ -11,16 +11,16 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "SynthSound.h"
+#include "ThinkSynthSound.h"
 #include "Maximilian/maximilian.h"
 
 
-    class SynthVoice : public SynthesiserVoice
+    class ThinkSynthVoice : public SynthesiserVoice
 {
 public:
     bool canPlaySound (SynthesiserSound* sound) override
     {
-        return dynamic_cast <SynthSound*>(sound) != nullptr;
+        return dynamic_cast <ThinkSynthSound*>(sound) != nullptr;
     }
     
     
@@ -37,17 +37,17 @@ public:
     {
         switch (theWave){
             case 0:
-                return osc1.sinewave(frequency);
+                return oscillator.sinewave(frequency);
             case 1:
-                return osc1.saw(frequency);
+                return oscillator.saw(frequency);
             case 2:
-                return osc1.square(frequency);
+                return oscillator.square(frequency);
             case 3:
-                return osc1.noise();
+                return oscillator.noise();
             case 4:
-                return osc1.sawn(frequency);
+                return oscillator.sawn(frequency);
             default:
-                return osc1.sinewave(frequency);
+                return oscillator.sinewave(frequency);
         }
     }
     
@@ -55,17 +55,17 @@ public:
     
     void getEnvelopeParams(float* attack, float* decay, float* sustain, float* release)
     {
-        env1.setAttack(*attack);
-        env1.setDecay(*decay);
-        env1.setSustain(*sustain);
-        env1.setRelease(*release);
+        envelope.setAttack(*attack);
+        envelope.setDecay(*decay);
+        envelope.setSustain(*sustain);
+        envelope.setRelease(*release);
     }
     
     //=======================================================
     
     double setEnvelope()
     {
-        return env1.adsr(setOscType(), env1.trigger);
+        return envelope.adsr(setOscType(), envelope.trigger);
     }
     
     //=======================================================
@@ -82,7 +82,7 @@ public:
     
     void startNote (int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition) override
     {
-        env1.trigger = 1;
+        envelope.trigger = 1;
         frequency = MidiMessage::getMidiNoteInHertz(midiNoteNumber);
         level = velocity;
     }
@@ -91,7 +91,7 @@ public:
     
     void stopNote (float velocity, bool allowTailOff) override
     {
-        env1.trigger = 0;
+        envelope.trigger = 0;
         allowTailOff = true;
         
         if (velocity == 0)
@@ -128,6 +128,8 @@ public:
     
     //=======================================================
 private:
+    maxiOsc oscillator;
+    maxiEnv envelope;
     double level;
     double frequency;
     int theWave;
@@ -135,8 +137,4 @@ private:
     int filterChoice;
     float cutoff;
     float resonance;
-    
-    maxiOsc osc1;
-    maxiEnv env1;
-// distortion;
 };
