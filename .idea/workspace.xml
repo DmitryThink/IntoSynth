@@ -13,9 +13,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Source/ThinkSynthVoice.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ThinkSynthVoice.h" afterDir="false" />
-    </list>
+    <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/Builds/CLion/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,14 +48,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="94" column="74" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
+            <state relative-caret-position="283">
+              <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
               <folding>
                 <element signature="e#264#306#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="458" column="13" lean-forward="true" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-24">
+              <caret line="1609" column="16" selection-start-line="1609" selection-start-column="16" selection-end-line="1609" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -79,30 +95,6 @@
               <second_editor>
                 <markdownNavigatorState />
               </second_editor>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/ReverbSliders.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="80" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="80" />
-              <folding>
-                <element signature="e#253#295#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/ReverbSliders.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-              <folding>
-                <element signature="e#241#283#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -147,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>update</find>
       <find>paint (</find>
       <find>phaser</find>
       <find>keyboardComponent</find>
@@ -177,6 +168,7 @@
       <find>juceSynth</find>
       <find>frequency</find>
       <find>setFilterParams</find>
+      <find>trigger</find>
     </findStrings>
     <replaceStrings>
       <replace>Ratio</replace>
@@ -375,12 +367,12 @@
       <workItem from="1547558102022" duration="4871000" />
       <workItem from="1547722658132" duration="9380000" />
       <workItem from="1547819642645" duration="612000" />
-      <workItem from="1548061734427" duration="2637000" />
+      <workItem from="1548061734427" duration="3294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99297000" />
+    <option name="totallyTimeSpent" value="99954000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,8 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.h" />
-    <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.cpp" />
     <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -648,11 +638,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="94" column="74" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
+        <state relative-caret-position="283">
+          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
           <folding>
             <element signature="e#264#306#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="458" column="13" lean-forward="true" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Maximilian/maximilian.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="1609" column="16" selection-start-line="1609" selection-start-column="16" selection-end-line="1609" selection-end-column="16" />
         </state>
       </provider>
     </entry>
