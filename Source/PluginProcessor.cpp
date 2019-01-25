@@ -42,12 +42,7 @@ tree(*this, nullptr)
     NormalisableRange<float> wavetypeParam (0, 2);
     tree.createAndAddParameter("wavetype", "WaveType", "wavetype", wavetypeParam, 0, nullptr, nullptr);
     
-    NormalisableRange<float> filterTypeVal (0, 2);
-    NormalisableRange<float> filterVal (20.0f, 10000.0f);
-    NormalisableRange<float> resVal (1, 5);
-    tree.createAndAddParameter("filterType", "FilterType", "filterType", filterTypeVal, 0, nullptr, nullptr);
-    tree.createAndAddParameter("filterCutoff", "FilterCutoff", "filterCutoff", filterVal, 400.0f, nullptr, nullptr);
-    tree.createAndAddParameter("filterRes", "FilterRes", "filterRes", resVal, 1, nullptr, nullptr);
+    filter.setGUI(tree);
 
     NormalisableRange<float> roomSizeVal (0.0f, 1.0f);
     NormalisableRange<float> dryLevelVal (0.0f, 1.0f);
@@ -162,15 +157,9 @@ void ThinkSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
     mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
     theReverb.setSampleRate(lastSampleRate);
     
-    dsp::ProcessSpec spec;
-    spec.sampleRate = lastSampleRate;
-    spec.maximumBlockSize = samplesPerBlock;
-    spec.numChannels = getTotalNumOutputChannels();
-    
-    stateVariableFilter.reset();
-    stateVariableFilter.prepare(spec);
+    filter.prepareToPlay(lastSampleRate, samplesPerBlock, getTotalNumOutputChannels());
     keyboardState.reset();
-    updateFilter();
+    filter.updateFilter(tree, lastSampleRate);
 
     mSampleRate = sampleRate;
     const int totalNumInputChannels  = getTotalNumOutputChannels();
@@ -210,31 +199,6 @@ bool ThinkSynthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 }
 #endif
 
-void ThinkSynthAudioProcessor::updateFilter()
-{
-    int menuChoice = *tree.getRawParameterValue("filterType");
-    int freq = *tree.getRawParameterValue("filterCutoff");
-    int res = *tree.getRawParameterValue("filterRes");
-    
-    if (menuChoice == 0)
-    {
-        stateVariableFilter.state->type = dsp::StateVariableFilter::Parameters<float>::Type::lowPass;
-        stateVariableFilter.state->setCutOffFrequency(lastSampleRate, freq, res);
-    }
-    
-    if (menuChoice == 1)
-    {
-        stateVariableFilter.state->type = dsp::StateVariableFilter::Parameters<float>::Type::highPass;
-        stateVariableFilter.state->setCutOffFrequency(lastSampleRate, freq, res);
-    }
-    
-    if (menuChoice == 2)
-    {
-        stateVariableFilter.state->type = dsp::StateVariableFilter::Parameters<float>::Type::bandPass;
-        stateVariableFilter.state->setCutOffFrequency(lastSampleRate, freq, res);
-    }
-}
-
 void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
@@ -254,7 +218,7 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
 
           myVoice->setOscillatorType(tree.getRawParameterValue("wavetype"));
 
-          myVoice->setFilterParams(tree.getRawParameterValue("filterType"),
+          myVoice->setFilterParams(tree.getRawParameterValue("filterMenu"),
                                    tree.getRawParameterValue("filterCutoff"),
                                    tree.getRawParameterValue("filterRes"));
 
@@ -269,7 +233,7 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
 
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 
-    updateFilter();
+    filter.updateFilter(tree, lastSampleRate);
 
     dsp::AudioBlock<float> block (buffer);
 
@@ -320,7 +284,7 @@ void ThinkSynthAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuff
     }
 
     // Filter
-    stateVariableFilter.process(dsp::ProcessContextReplacing<float> (block));
+    filter.process(block);
 }
 
 void ThinkSynthAudioProcessor::fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData)

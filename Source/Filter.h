@@ -2,42 +2,24 @@
   ==============================================================================
 
     Filter.h
-    Created: 14 Jan 2018 8:59:36pm
-    Author:  Joshua Hodge
+    Created: 23 Jan 2019 2:47:50am
+    Author:  think
 
   ==============================================================================
 */
-
 #pragma once
-
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "PluginProcessor.h"
 
-//==============================================================================
-/*
-*/
-class Filter    : public Component
+class Filter
 {
-public:
-    Filter(ThinkSynthAudioProcessor&);
-    ~Filter();
+ public:
+  Filter();
+  ~Filter();
+  void setGUI(AudioProcessorValueTreeState& tree);
+  void prepareToPlay(double sampleRate, int samplesPerBlock, int numberOfOutPutChannels);
+  void updateFilter(AudioProcessorValueTreeState& tree, double sampleRate);
+  void process(dsp::AudioBlock<float>& block);
 
-    void paint (Graphics&) override;
-    void resized() override;
-
-private:
-    Slider filterCutoff;
-    Slider filterRes;
-    
-    ComboBox filterMenu;
-    
-    ScopedPointer<AudioProcessorValueTreeState::ComboBoxAttachment> filterTypeVal;
-    ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> filterVal;
-    ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> resVal;
-    
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    ThinkSynthAudioProcessor& processor;
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Filter)
+ private:
+  dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
 };

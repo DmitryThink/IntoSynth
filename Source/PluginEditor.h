@@ -14,7 +14,7 @@
 #include "PluginProcessor.h"
 #include "OscillatorGUI.h"
 #include "EnvelopeGUI.h"
-#include "Filter.h"
+#include "FilterGUI.h"
 #include "ReverbSliders.h"
 #include "DistortionGUI.h"
 #include "DelayGUI.h"
@@ -37,13 +37,11 @@ public:
     
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
     ThinkSynthAudioProcessor& processor;
     
     OscillatorGUI oscGui;
     EnvelopeGUI envGui;
-    Filter filterGui;
+    FilterGUI filterGui;
     ReverbSliders reverbGui;
     DistortionGUI distortionGUI;
     DelayGUI delayGUI;

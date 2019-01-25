@@ -14,6 +14,7 @@
 #include "ThinkSynthVoice.h"
 #include "ThinkSynthSound.h"
 #include "Distortion.h"
+#include "Filter.h"
 
 //==============================================================================
 /**
@@ -58,7 +59,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     
-    void updateFilter();
+//    void updateFilter();
 
     void fillDelayBuffer(int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
     void getFromDelayBuffer(AudioBuffer<float>& buffer, int channel, const int bufferLenght, const int delayBufferLenght, const float* bufferData, const float* delayBufferData);
@@ -76,9 +77,8 @@ private:
     Reverb::Parameters theReverbParameters;
 
     ScopedPointer<Distortion> dist;
+    Filter filter;
 
-    dsp::ProcessorDuplicator<dsp::StateVariableFilter::Filter<float> , dsp::StateVariableFilter::Parameters<float>> stateVariableFilter;
-    
     double lastSampleRate;
     int mSampleRate { 44100 };
 

@@ -20,10 +20,10 @@ ThinkSynthProcessorEditor::ThinkSynthProcessorEditor (ThinkSynthAudioProcessor& 
     
     addAndMakeVisible(&oscGui);
     addAndMakeVisible(&envGui);
-    addAndMakeVisible(&filterGui);
-    addAndMakeVisible(&reverbGui);
-    addAndMakeVisible(&distortionGUI);
-    addAndMakeVisible(&delayGUI);
+//    addAndMakeVisible(&filterGui);
+//    addAndMakeVisible(&reverbGui);
+//    addAndMakeVisible(&distortionGUI);
+//    addAndMakeVisible(&delayGUI);
     addAndMakeVisible(keyboardComponent);
 }
 
