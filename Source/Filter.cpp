@@ -13,7 +13,7 @@
 Filter::Filter() {}
 Filter::~Filter() {}
 
-void Filter::setGUI(AudioProcessorValueTreeState& tree){
+void Filter::setParametersToTree(AudioProcessorValueTreeState &tree){
   NormalisableRange<float> filterMenu (0, 2);
   NormalisableRange<float> filterCutoff (20.0f, 10000.0f);
   NormalisableRange<float> filterRes (1, 5);

@@ -41,8 +41,8 @@ tree(*this, nullptr)
 
     NormalisableRange<float> wavetypeParam (0, 2);
     tree.createAndAddParameter("wavetype", "WaveType", "wavetype", wavetypeParam, 0, nullptr, nullptr);
-    
-    filter.setGUI(tree);
+
+  filter.setParametersToTree(tree);
 
     NormalisableRange<float> roomSizeVal (0.0f, 1.0f);
     NormalisableRange<float> dryLevelVal (0.0f, 1.0f);

@@ -15,7 +15,7 @@ class Filter
  public:
   Filter();
   ~Filter();
-  void setGUI(AudioProcessorValueTreeState& tree);
+  void setParametersToTree(AudioProcessorValueTreeState &tree);
   void prepareToPlay(double sampleRate, int samplesPerBlock, int numberOfOutPutChannels);
   void updateFilter(AudioProcessorValueTreeState& tree, double sampleRate);
   void process(dsp::AudioBlock<float>& block);
