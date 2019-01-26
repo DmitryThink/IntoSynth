@@ -15,6 +15,8 @@
               cppLanguageStandard="17" pluginRTASCategory="4096">
   <MAINGROUP id="Z0T8fs" name="thinkSynth">
     <GROUP id="{FDD0FFB0-7ABA-CAD0-AB6D-A607E5623CAE}" name="Source">
+      <FILE id="ztMTHj" name="Delay.cpp" compile="1" resource="0" file="Source/Delay.cpp"/>
+      <FILE id="FNEQSE" name="Delay.h" compile="0" resource="0" file="Source/Delay.h"/>
       <FILE id="j5gsEI" name="Filter.cpp" compile="1" resource="0" file="Source/Filter.cpp"/>
       <FILE id="t7zbdJ" name="Filter.h" compile="0" resource="0" file="Source/Filter.h"/>
       <FILE id="pBY9Sa" name="DelayGUI.cpp" compile="1" resource="0" file="Source/DelayGUI.cpp"/>

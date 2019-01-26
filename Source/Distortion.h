@@ -49,5 +49,4 @@ private:
     float waveShaper3(float sample, float alpha);
 
     float gloubiBoulga(float sample);
-    float gloubiApprox(float sample);
 };

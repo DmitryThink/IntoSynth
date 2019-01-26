@@ -98,6 +98,25 @@ public:
         }
     }
 
+    void setOscilattorParametersToTree(AudioProcessorValueTreeState &tree){
+        NormalisableRange<float> wavetypeParam (0, 2);
+        tree.createAndAddParameter("wavetype", "WaveType", "wavetype", wavetypeParam, 0, nullptr, nullptr);
+    }
+
+    void setEnvelopeParametersToTree(AudioProcessorValueTreeState &tree){
+        //need these normalisable range objects for the tree state below this
+        NormalisableRange<float> attackParam (0.1f, 5000.0f);
+        NormalisableRange<float> decayParam (1.0f, 2000.0f);
+        NormalisableRange<float> sustainParam (0.0f, 1.0f);
+        NormalisableRange<float> releaseParam (0.1f, 5000.0f);
+
+        //params that make it possible to set/get states and automate parameters in your DAW.  Also connects values between the slider and the values here
+        tree.createAndAddParameter("attack", "Attack", "attack", attackParam, 0.1f, nullptr, nullptr);
+        tree.createAndAddParameter("decay", "Decay", "decay", decayParam, 1.0f, nullptr, nullptr);
+        tree.createAndAddParameter("sustain", "Sustain", "sustain", sustainParam, 0.8f, nullptr, nullptr);
+        tree.createAndAddParameter("release", "Release", "release", releaseParam, 0.1f, nullptr, nullptr);
+    }
+
 private:
     maxiOsc oscillator;
     int oscillatorType;

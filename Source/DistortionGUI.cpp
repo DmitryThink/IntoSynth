@@ -22,8 +22,7 @@ DistortionGUI::DistortionGUI(ThinkSynthAudioProcessor& p) :
     distortionMenu.addItem("Square Law", 4);
     distortionMenu.addItem("Cubic WaveShaper", 5);
     distortionMenu.addItem("Foldback", 6);
-    distortionMenu.addItem("Gloubi Approx", 7);
-    distortionMenu.addItem("Gloubi Boulga", 8);
+    distortionMenu.addItem("Gloubi Boulga", 7);
     
     distortionMenu.setJustificationType(Justification::centred);
     addAndMakeVisible(&distortionMenu);

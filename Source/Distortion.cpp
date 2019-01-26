@@ -47,9 +47,6 @@ float Distortion::processSample(float sample, float type, float amplitude, float
             output = foldback(output);
             break;
         case 7:
-            output = gloubiApprox(output);
-            break;
-        case 8:
             output = gloubiBoulga(output);
             break;
         default:
@@ -184,10 +181,4 @@ float Distortion::gloubiBoulga(float sample)
     const double x = sample * 0.686306;
     const double a = 1 + exp(sqrt(fabs(x)) * -0.75);
     return (exp(x) - exp(-x * a)) / (exp(x) + exp(-x));
-}
-
-// Approximation based on description in gloubiBoulga
-float Distortion::gloubiApprox(float sample)
-{
-    return sample - (0.15f * sample * sample) - (0.15f * sample * sample * sample);
 }
