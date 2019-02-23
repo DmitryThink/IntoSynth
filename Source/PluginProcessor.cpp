@@ -138,11 +138,9 @@ void ThinkSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
     lastSampleRate = sampleRate;
     mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
     reverb.setSampleRate(lastSampleRate);
-    
     filter.prepareToPlay(lastSampleRate, samplesPerBlock, getTotalNumOutputChannels());
     keyboardState.reset();
     filter.updateFilter(tree, lastSampleRate);
-
     //Delay
     delay.prepareToPlay(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
 }

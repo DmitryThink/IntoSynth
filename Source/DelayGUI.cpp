@@ -61,7 +61,7 @@ void DelayGUI::paint (Graphics& g)
 
   Rectangle <float> area (25, 25, 150, 150);
 
-  g.setColour(Colours::yellow);
+  g.setColour(Colours::blue);
   g.drawRoundedRectangle(area, 20.0f, 2.0f);
 }
 
