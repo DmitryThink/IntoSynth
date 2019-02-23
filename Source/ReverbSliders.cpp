@@ -73,10 +73,10 @@ void ReverbSliders::paint (Graphics& g)
 
     //static positioning for now due to time, make dynamic later
     g.drawText ("RS", 53, 150, 20, 20, Justification::centredTop);
-    g.drawText ("Da", 70, 150, 20, 20, Justification::centredTop);
-    g.drawText ("Wet", 93, 150, 20, 20, Justification::centredTop);
-    g.drawText ("Dr", 110, 150, 20, 20, Justification::centredTop);
-    g.drawText ("W", 128, 150, 20, 20, Justification::centredTop);
+    g.drawText ("D", 73, 150, 20, 20, Justification::centredTop);
+    g.drawText ("W", 93, 150, 20, 20, Justification::centredTop);
+    g.drawText ("D", 110, 150, 20, 20, Justification::centredTop);
+    g.drawText ("Wth", 128, 150, 20, 20, Justification::centredTop);
 
     Rectangle <float> area (25, 25, 150, 150);
 

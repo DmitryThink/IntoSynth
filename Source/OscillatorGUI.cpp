@@ -40,7 +40,7 @@ void OscillatorGUI::paint (Graphics& g)
     
     g.fillAll (Colours::black);
     g.setColour(Colours::white);
-    g.drawText("OscillatorGUI", titleArea, Justification::centredTop);
+    g.drawText("Oscillator", titleArea, Justification::centredTop);
     
     Rectangle <float> area (25, 25, 150, 150);
     

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="thinkSynth" targetName="VST" />
       <config projectName="thinkSynth" targetName="STANDALONE_PLUGIN" />
       <config projectName="thinkSynth" targetName="SHARED_CODE" />
+      <config projectName="thinkSynth" targetName="VST" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -15,12 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ef883b9-17dc-45d2-b7d8-4f19f5655b3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DelayGUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DelayGUI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DistortionGUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DistortionGUI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/EnvelopeGUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/EnvelopeGUI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/FilterGUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/FilterGUI.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/OscillatorGUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/OscillatorGUI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/PluginProcessor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PluginProcessor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ReverbSliders.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ReverbSliders.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Builds/CLion/cmake-build-debug/" />
@@ -35,25 +30,13 @@
     <splitter split-orientation="horizontal" split-proportion="0.7009585">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Source/ReverbSliders.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1230">
-                  <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+                <state relative-caret-position="415">
+                  <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
                   <folding>
                     <element signature="e#241#283#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Source/FilterGUI.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="840">
-                  <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#247#289#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -71,8 +54,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="690">
-                  <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+                <state relative-caret-position="630">
+                  <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Source/Filter.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -89,11 +81,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Source/PluginEditor.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="236">
-                  <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
                   <folding>
                     <element signature="e#273#301#0" expanded="true" />
                   </folding>
@@ -274,12 +266,12 @@
         <option value="$PROJECT_DIR$/Source/Delay.h" />
         <option value="$PROJECT_DIR$/Source/PluginProcessor.cpp" />
         <option value="$PROJECT_DIR$/Source/DelayGUI.cpp" />
-        <option value="$PROJECT_DIR$/Source/ReverbSliders.cpp" />
         <option value="$PROJECT_DIR$/Source/FilterGUI.cpp" />
         <option value="$PROJECT_DIR$/Source/DistortionGUI.cpp" />
         <option value="$PROJECT_DIR$/Source/EnvelopeGUI.cpp" />
-        <option value="$PROJECT_DIR$/Source/OscillatorGUI.cpp" />
         <option value="$PROJECT_DIR$/Source/PluginEditor.cpp" />
+        <option value="$PROJECT_DIR$/Source/OscillatorGUI.cpp" />
+        <option value="$PROJECT_DIR$/Source/ReverbSliders.cpp" />
       </list>
     </option>
   </component>
@@ -294,6 +286,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,7 +303,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -426,12 +418,13 @@
       <workItem from="1548217061925" duration="1147000" />
       <workItem from="1548440188000" duration="6020000" />
       <workItem from="1548499828253" duration="7126000" />
-      <workItem from="1550846722929" duration="1807000" />
+      <workItem from="1550846722929" duration="1941000" />
+      <workItem from="1550883571312" duration="240000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130575000" />
+    <option name="totallyTimeSpent" value="130949000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,7 +439,7 @@
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1664888" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16808964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -630,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Filter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/ThinkSynthVoice.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -671,22 +657,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/ReverbSliders.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
-          <folding>
-            <element signature="e#241#283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/FilterGUI.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding>
             <element signature="e#247#289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/ReverbSliders.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding>
+            <element signature="e#241#283#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -700,8 +686,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/OscillatorGUI.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        <state relative-caret-position="630">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Filter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -711,6 +704,16 @@
           <caret line="31" selection-end-line="40" />
           <folding>
             <element signature="e#252#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PluginEditor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="e#273#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -742,16 +745,6 @@
           <caret line="40" column="80" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="80" />
           <folding>
             <element signature="e#253#295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PluginEditor.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#273#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
